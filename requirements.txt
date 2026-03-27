@@ -1,0 +1,6 @@
+pandas
+matplotlib
+numpy
+google-genai
+dotenv
+ipykernel
