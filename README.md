@@ -152,13 +152,13 @@ El proceso de limpieza y generación de data sintética se encuentra en: [Genera
 
 1. 
 <div align="center">
-  <img src="wordcloud_ham.png" width="500"/>
+  <img src="imgs/wordcloud_ham.png" width="500"/>
   <p><em>Figura X: Worldcloud de los mensajes legítmos dataset de mensajes de SPAM de Hugging Face </em></p>
 </div>
 
 2. 
 
 <div align="center">
-  <img src="wordcloud_spam.png" width="500"/>
+  <img src="imgs/wordcloud_spam.png" width="500"/>
   <p><em>Figura X: Worldcloud de los mensajes legítmos dataset de mensajes de SPAM de Hugging Face </em></p>
 </div>
