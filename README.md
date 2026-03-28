@@ -134,6 +134,8 @@ Propósito:
 Categorizar los mensajes legítimos y comprender sus características para diferenciarlos de los mensajes maliciosos.
 
 
+Los resultados se encuentran en el archivo: [dataset_encuesta.csv](data/dataset_encuesta.csv)
+
 ### Análisis de los resultados
 
 Se obtuvieron resultados bastante interesantes y se demostró porque era necesario desarollar un dataset de mensajes de texto legítimos y maliciosos adaptado al contexto guatemalteco pues a pesar de ser una muestra pequeña, vemos que las palabras más utilizadas son muy diferentes a las del dataset de mensajes spam en español de [Hugging face](https://huggingface.co/datasets/softecapps/spam_ham_spanish), en Guatemala el phishing se relaciona más a multas, entrega de productos y dinero (sale el lexema 00) mientras que en el resto del mundo las estafas se centran más on ofrecer algo gratis o ganar un premio. Se puede ver la worldcloud del dataset anteriormente mencionado en la sección de anexos
