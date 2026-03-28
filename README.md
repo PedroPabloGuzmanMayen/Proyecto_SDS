@@ -200,8 +200,80 @@ Los mensajes generados sintéticamente se encuentran en el archivo: [dataset_sin
 Finalmente, se le solicito al modelo *Claude 4.6 Sonet* con el MCP de búsqueda en internet que encontrará los números de teléfono de las instituciones bancarias, operadoras telfónicas, empresas de paquetería y cadenas de restaurantes más famosas en Guatemala y en base a los resultados de la búsqueda generar una whitelist. Los resultados se encuentran en el archivo: [whitelist.csv](data/whitelist.csv)
 
 
+## Parte 3: análisis exloratorio
 
-## Parte 3 
+Ya con el dataset formado, se encontraron los siguientes hallazgos en el análisis exploratorio: 
+
+- La distribución de clases es equilibrada aunque predominan los mensajes legítimos
+
+<div align="center">
+  <img src="imgs/fig1_clases.png" width="500"/>
+  <p><em>Figura 8: Distribución de los tipos de mensajes en el dataset  </em></p>
+</div>
+
+
+- Hay categorías de mensajes predominantes, esto podría generar problemas más adelente pues los modelos pueden sufrir *overfitting* de las clases predominants, sin embargo se puede usar una técnica como *SMOTE* para balancear el dataset
+
+<div align="center">
+  <img src="imgs/fig2_categorias.png" width="500"/>
+  <p><em>Figura 9: Distribución de los tipos de mensajes en el dataset  </em></p>
+</div>
+
+-  Ambas clases comparten palabras de instituciones guatemaltecas (Tigo, Claro, Banrural) porque los spammers las suplantan activamente. Lo que diferencia al Spam son: *paquete*, *premio*, *enlace*, *link*, *evitar*, *emetra*, *aquí/aqui*. Estos términos están asociados a urgencia, retención de envíos y llamadas a la acción. Ham en cambio concentra: *saldo*, *código*, *factura*, *plan*, *cliente*, *gracias*. Lo cuál corresponde a lenguaje de notificación transaccional legítima.
+
+<div align="center">
+  <img src="imgs/fig4_palabras.png" width="500"/>
+  <p><em>Figura 10: Distribución de los tipos de mensajes en el dataset  </em></p>
+</div>
+
+Para ver código y el proceso completo, ver el archivo: [Proyecto_implementación.ipynb](src/Proyecto_implementacion.ipynb)
+
+## Parte 4: extracción de características
+
+En base a los resultados del análisis exploratorio se determinaron las palabras que mejor representan tanto a los mensajes ilegítimos  como a los legítimos, en base a eso se extrajeron las siguientes características de cada mensaje: 
+
+
+- **has_url:** indica si el mensaje contiene un enlace; se obtiene buscando patrones como `http://`, `https://` o `www.` con expresiones regulares.
+
+- **url_suspicious:** indica si el enlace no pertenece a dominios legítimos conocidos; se obtiene comparando las URLs encontradas contra una lista de dominios confiables.
+
+- **msg_length:** mide la longitud total del mensaje; se obtiene contando el número de caracteres del texto.
+
+- **word_count:** indica la cantidad de palabras en el mensaje; se obtiene dividiendo el texto por espacios y contando los elementos.
+
+- **has_urgency:** detecta si el mensaje transmite urgencia; se obtiene verificando si contiene palabras clave como "urgente", "ahora", "hoy mismo".
+
+- **has_cta:** identifica si hay un llamado a la acción; se obtiene buscando palabras como "clic", "ingresa", "paga", "verifica".
+
+- **has_reward:** detecta si el mensaje ofrece recompensas o premios; se obtiene buscando términos como "ganaste", "premio", "gratis".
+
+- **has_threat:** indica si el mensaje contiene amenazas o consecuencias negativas; se obtiene buscando palabras como "bloqueo", "multa", "vence".
+
+- **has_impersonation:** detecta si el mensaje intenta suplantar una entidad; se obtiene buscando nombres de instituciones como bancos o entidades gubernamentales.
+
+- **impersonation_url:** indica una señal fuerte de phishing; se obtiene cuando hay simultáneamente suplantación (`has_impersonation`) y una URL sospechosa (`url_suspicious`).
+
+- **is_spam:** variable objetivo que indica si el mensaje es spam; se obtiene a partir de la etiqueta original del dataset (`label`).
+
+Ya con esas característcas, se identifico cuáles de estas se relacionaban mejor con la variable objetivo y se determino su importancia
+
+<div align="center">
+  <img src="imgs/fig5_correlacion.png" width="500"/>
+  <p><em>Figura 11: Correlación de cada característica con la etiqueta SPAM  </em></p>
+</div>
+
+<div align="center">
+  <img src="imgs/fig6_chi2.png" width="500"/>
+  <p><em>Figura 12: Prueba de Chi de cada característica  </em></p>
+</div>
+
+En base a eso, se conservaron las variables: url_suspicious, has_url, impersonation_url, has_urgency, has_reward, has_impersonation, has_threat y has_cta pues son las que mejor explican un mensaje de spam. 
+
+Finalmente, se vectorizó cada mensaje usando *TF_IDF*
+
+El proceso completo se puede ver en el archivo [Proyecto_implementación.ipynb](src/Proyecto_implementacion.ipynb) y el dataset final con todas las características está en [dataset_smishing_features.csv](data/dataset_smishing_features)
+
+
 
 ## Anexos
 
