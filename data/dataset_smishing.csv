@@ -1,18 +1,18 @@
 ,Mensaje,Categoria,tipo,texto,categoria
-0,"Se autorizó un cargo por Q8,500 en BAC. Si no fuiste tú llama al [Número falso]"," Financiero (préstamos, inversiones, criptomonedas, pólizas, cheques)",Spam,,
+0,"Se autorizó un cargo por Q8,500 en BAC. Si no fuiste tú llama al [Número falso]",,Spam,,
 1,"Hemos intentado entregar tu paquete dos veces, pero debido a que falta una dirección y un código postal incorrecto, ¡el paquete se encuentra retenido en el centro de tránsito! Puedes visitarlo en 12 horas.
 
 https://correosyteiegrafo.top/i?WBS=uaGBOJILZW?qkY=zkj8OWrxi6
 
-Actualiza tu dirección y solicita un reenvío para evitar pérdidas innecesarias."," Paquetes y envíos (maletas, importación, entrega de bienes)",Spam,,
-2,"Hola correo central!! te han enviado un paquete , confirma la entrega en: https://qrco.de/bfZKDw"," Paquetes y envíos (maletas, importación, entrega de bienes)",Spam,,
+Actualiza tu dirección y solicita un reenvío para evitar pérdidas innecesarias.",paquetes_envios,Spam,,
+2,"Hola correo central!! te han enviado un paquete , confirma la entrega en: https://qrco.de/bfZKDw",paquetes_envios,Spam,,
 3,"Intentamos entregar tu paquete, pero no pudimos porque faltaba el número de la casa. Tu paquete está en espera hasta que obtengamos la dirección completa.
 
 Actualiza tu dirección aquí: https://bit.ly/3CytMbd?Kuj=AdRlB9I0rs?nWs=NAiBZW33fD
 
-¡Gracias!"," Paquetes y envíos (maletas, importación, entrega de bienes)",Spam,,
+¡Gracias!",paquetes_envios,Spam,,
 4,"Guatex: Su paquete ha llegado al almacén pero no puede ser enviado debido a una dirección incompleta. Para facilitar la descarga, actualice los detalles de descarga. Usted es responsable del costo del cambio. Haga clic en el siguiente enlace para realizar cambios: ? https://guatex-gov.icu/N00424/?a=JXfun ? Corrija dentro de las 12 horas para evitar daños innecesarios al servicio postal rumano.  Centro de seguridad de Google:
-https://www.google.com/maps/place/37.42215,-122.08533/"," Paquetes y envíos (maletas, importación, entrega de bienes)",Spam,,
+https://www.google.com/maps/place/37.42215,-122.08533/",paquetes_envios,Spam,,
 5,"¡Hola! Hemos notado que su currículum aparece en muchos sitios de empleo. Estamos contratando en línea y nos gustaría ofrecerle un trabajo que pueda completar en su tiempo libre.
  
 El trabajo es sencillo, no hay límite de tiempo y puedes realizarlo en casa usando tu teléfono móvil o tu ordenador.
@@ -20,15 +20,15 @@ El trabajo es sencillo, no hay límite de tiempo y puedes realizarlo en casa usa
  Los salarios diarios oscilan entre GTQ 55 y 8.000, todos los salarios se pagan el mismo día.
 (Nota: Requisito de edad: mayor de 23 años, debe tener una cuenta bancaria para recibir salario).
  
-Si está interesado en este puesto, haga clic en el enlace de WhatsApp a continuación para obtener más información sobre el puesto.  http://wa.me/84328634637?eUj=aEf4ALAFy5","Servicios y trabajo (ofertas de empleo, visas, servicios no realizados, talleres)",Spam,,
-6,Tienes un paquete pendiente de entrega ," Paquetes y envíos (maletas, importación, entrega de bienes)",Spam,,
-7,Su paquete está detenido," Paquetes y envíos (maletas, importación, entrega de bienes)",Spam,,
+Si está interesado en este puesto, haga clic en el enlace de WhatsApp a continuación para obtener más información sobre el puesto.  http://wa.me/84328634637?eUj=aEf4ALAFy5",servicios_trabajo,Spam,,
+6,Tienes un paquete pendiente de entrega ,paquetes_envios,Spam,,
+7,Su paquete está detenido,paquetes_envios,Spam,,
 8,"Keda Mobile Power Ltd Reclutamiento:
 Mayores de 22 años
 calculo de salario diario
 Gana entre $20 y $200 por día
 Gana dinero solo usando tu teléfono
-Contacta con el gestor vía telegraph:  https://t.me/CayWh0","Servicios y trabajo (ofertas de empleo, visas, servicios no realizados, talleres)",Spam,,
+Contacta con el gestor vía telegraph:  https://t.me/CayWh0",servicios_trabajo,Spam,,
 9,"Estimado usuario, desde EMETRA le informamos que 
 cuenta con una infracción de tránsito pendiente de 
 pago la cual ha vencido su plazo. Por favor, realice 
@@ -42,15 +42,15 @@ https://especiales.muniguate.icu/gt
 
 Para obtener instrucciones de pago detalladas, 
 responda ""Y"" a este mensaje y acceda a nuestro 
-portal oficial.", No sé / Otra,Spam,,
-10,EMETRA: Multa de transito vencida a su nombre. Pague dentro de las 12 horas en https://lnk.ink/nsut3 para no tener gastos supplementarios., No sé / Otra,Spam,,
+portal oficial.",otro,Spam,,
+10,EMETRA: Multa de transito vencida a su nombre. Pague dentro de las 12 horas en https://lnk.ink/nsut3 para no tener gastos supplementarios.,otro,Spam,,
 11,"Correo Expreso:
 Su paquete ha llegado a la oficina de correos, lo hemos entregado dos veces sin éxito, actualice la información de su dirección. En caso contrario, el paquete será devuelto.
 
 Enlace: qrco.de/bfJiua?xFF=YfsAiX9Tf8?MHw=9HyMn03Tsa
 
-(Abra directamente el enlace o copie el enlace en el navegador de su móvil)"," Paquetes y envíos (maletas, importación, entrega de bienes)",Spam,,
-12,Tigo - Reclama tu premio, No sé / Otra,Spam,,
+(Abra directamente el enlace o copie el enlace en el navegador de su móvil)",paquetes_envios,Spam,,
+12,Tigo - Reclama tu premio,otro,Spam,,
 13,"EMETRA - Aviso Importante sobre Multa de Tránsito
 
 Le informamos que en nuestro sistema figura una infracción de tránsito pendiente, cuyo plazo de pago ya ha expirado. Para evitar cargos adicionales, es necesario regularizar la situación dentro de las próximas 12 horas. 
@@ -63,7 +63,7 @@ Puede revisar los detalles correspondientes en el siguiente enlace: https://espe
 
 Para obtener las instrucciones completas de pago, responda con ""Y"" a este mensaje y acceda a nuestro portal oficial.
 
-Agradecemos su pronta atención y colaboración con EMETRA","Compra o venta de productos (vehículos, joyería, muebles, inmuebles, repuestos)",Spam,,
+Agradecemos su pronta atención y colaboración con EMETRA",compra_venta,Spam,,
 14,"Estimado usuario: 
 El servicio de Tigo puntos te recuerda que tu cuenta de puntos actual (3022 puntos) expirará dentro de tres días hábiles. Para evitar impactos, por favor canjea tus puntos de recompensa rápidamente.
 
@@ -74,16 +74,16 @@ web para canjear tus regalos:
 
 El servicio de puntos te ofrece las últimas y más prácticas actividades promocionales. 
 
-Los puntos no sólo se pueden utilizar directamente para pagar las cuentas, sino que también se pueden canjear por varios regalos de la vida, incluyendo vales de regalo del supermercado, vales de efectivo de café, tarjetas de recarga, etc., para satisfacer sus diversas necesidades.","Premios y recompensas (vacaciones, sorteos, regalos)",Spam,,
-15,"""Felicidades"" Su numero ha sido ganador de 35,000 mil dólares y vehículo para mayor información comunicarse vía WhatsApp al número +50257519147 le atenderá lic.alberto cayetano comunicate inmediatamente","Premios y recompensas (vacaciones, sorteos, regalos)",Spam,,
-16,"Se le informa que su envío de forza ah sido retrasado, se necesita que de un pequeño recargo para el envío "," Paquetes y envíos (maletas, importación, entrega de bienes)",Spam,,
-17,"Has sido ganador de un premio ,  un carro","Premios y recompensas (vacaciones, sorteos, regalos)",Spam,,
-18,Buscas trabajo estable,"Servicios y trabajo (ofertas de empleo, visas, servicios no realizados, talleres)",Spam,,
+Los puntos no sólo se pueden utilizar directamente para pagar las cuentas, sino que también se pueden canjear por varios regalos de la vida, incluyendo vales de regalo del supermercado, vales de efectivo de café, tarjetas de recarga, etc., para satisfacer sus diversas necesidades.",premios,Spam,,
+15,"""Felicidades"" Su numero ha sido ganador de 35,000 mil dólares y vehículo para mayor información comunicarse vía WhatsApp al número +50257519147 le atenderá lic.alberto cayetano comunicate inmediatamente",premios,Spam,,
+16,"Se le informa que su envío de forza ah sido retrasado, se necesita que de un pequeño recargo para el envío ",paquetes_envios,Spam,,
+17,"Has sido ganador de un premio ,  un carro",premios,Spam,,
+18,Buscas trabajo estable,servicios_trabajo,Spam,,
 19,"Hola Javier, estoy aburrida hablamos?
 Mira mis fotos aquí: *Link
-"," Estafa afectiva (romance, familiar en problemas)",Spam,,
-20,"Banrural: Amigo, actualiza tu App Banrural para disfrutar de nuevas funciones y mejoras. Descarga la ultima version aqui: https://dlinks.banrural.com.gt/?cmp=sms","Digital y educación (venta de tareas, links sospechosos)",Spam,,
-21,"Si envía Q1500  a este número, se lleva el triple de sus inversión","Premios y recompensas (vacaciones, sorteos, regalos)",Spam,,
+",estafa_afectiva,Spam,,
+20,"Banrural: Amigo, actualiza tu App Banrural para disfrutar de nuevas funciones y mejoras. Descarga la ultima version aqui: https://dlinks.banrural.com.gt/?cmp=sms",digital,Spam,,
+21,"Si envía Q1500  a este número, se lleva el triple de sus inversión",premios,Spam,,
 22,"?? EMETRA  Aviso Importante sobre Multa de Tránsito
 
 Le informamos que en nuestro sistema figura una infracción de tránsito pendiente, cuyo plazo de pago ya ha expirado. Para evitar cargos adicionales, es necesario regularizar la situación dentro de las próximas 12 horas ?.
@@ -97,52 +97,52 @@ https://especiales.muniguate.one/gt
 
 Para obtener las instrucciones completas de pago, responda con Y a este mensaje y acceda a nuestro portal oficial.
 
-Agradecemos su pronta atención y colaboración con EMETRA.", No sé / Otra,Spam,,
-23,"Felicidades fuiste seleccionado para participar en un viaje todo pagado, para reclamar tu cupo haz click en este link","Premios y recompensas (vacaciones, sorteos, regalos)",Spam,,
-24,"Claro: tus 10460 puntos estan por vencer. no pierdas la oportunidad, canjea tus recompensas exclusivas ahora.   https://claroppoecs.cc/ec","Premios y recompensas (vacaciones, sorteos, regalos)",Spam,,
-25,Remitente desconocido: <#> 64763 es tu código de confirmación de Facebook Laz+nxCarLW," Paquetes y envíos (maletas, importación, entrega de bienes)",Spam,,
-26,"No hemos logrado contactarlo, visite el siguiente link para coordinar la entrega de su paquete."," Paquetes y envíos (maletas, importación, entrega de bienes)",Spam,,
-27,¡Felicidades! Has ganado un Smartphone 5G de Tigo. Haz clic aquí para confirmar tus datos y reclamarlo: tigo-premio-seguro.com/xyz,"Promoción o aviso de operadora (Tigo, Claro, Movistar)",Ham,,
-28,Eres un cliente DIAMANTE! Claro Premia tu Fidelidad. Marca al *999# y elige el paquete que mas te guste totalmente GRATIS. Nada mejor que ser CLARO!,"Promoción o aviso de operadora (Tigo, Claro, Movistar)",Ham,,
-29,Confirmación de entrega de pedido,Confirmación de compra o entrega,Ham,,
-30,Confirmar pedido, Código de verificación (2FA),Ham,,
-31,Bicredit: Te recordamos que tienes un cambio de categoria de tu tarjeta de debito actual confirma tu direccion de entrega aqui https://bi.gt/36hBVNr,"Notificación bancaria (movimiento, saldo, alerta)",Ham,,
-32,¡No te pierdas nuestra Pizza 5 Carnes por solo Q60! Pidela ahora por WhatsApp y disfruta sin salir de casa http://bc4.io/ed892df,Publicidad legítima de una empresa conocida,Ham,,
-33,Disfruta del sabor de la pizza de 1 ingrediente + 6 piezas de pollo + 3 flanes por Q169. Valido llamando al 1777. Mas informacion aqui http://bc4.io/b0147cf,Publicidad legítima de una empresa conocida,Ham,,
-34,Su codigo de verificacion para Claude es: 081577, Código de verificación (2FA),Ham,,
-35,Confirmación de pedido,Confirmación de compra o entrega,Ham,,
-36,Sabías que tienes efectivo disponible ,"Notificación bancaria (movimiento, saldo, alerta)",Ham,,
-37,Confirmación de entrega,Confirmación de compra o entrega,Ham,,
-38,Hola para visualizar el voucher de la compra realizada en CASTORS PIZZA ZONA 4 DELIVERY accede aqui: https://nn.gt/22f52481be59  Gracias por utilizar NeoNet!,Confirmación de compra o entrega,Ham,,
-39,Use el código 708834 para autenticar Microsoft, Código de verificación (2FA),Ham,,
-40,Potencia tu Plan tu Plan POSTPAGO! y disfruta de apps incluidas y mas datos. Haz clic y lleva tu experiencia al siguiente nivel! https://tgo.gt/b92,"Promoción o aviso de operadora (Tigo, Claro, Movistar)",Ham,,
-41,"BANRURAL: Amigo, tu codigo para TRANSFERENCIA A OTROS BANCOS-ACH es: 799126. Expira en 1 min. NO compartas este codigo con nadie. Banrural NUNCA te lo pedira.","Notificación bancaria (movimiento, saldo, alerta)",Ham,,
-42,Tigo en línea - Confirmación de pago ,"Promoción o aviso de operadora (Tigo, Claro, Movistar)",Ham,,
-43,Tigo Security analiza los enlaces en tiempo real y te advierte de posibles virus! No te arriesgues! Activalo aqui https://tgo.gt/psh5,"Promoción o aviso de operadora (Tigo, Claro, Movistar)",Ham,,
-44,"Vive el Mundial como se debe. Por ser cliente de Tigo Residencial, tu acceso YA ESTA INCLUIDO, con 34 partidos en exclusiva. Consulta los partidos aqui: https://tgo.gt/20m. Si tienes algun inconveniente con tu caja ingresa aqui: http://tgo.gt/cdarcanal","Promoción o aviso de operadora (Tigo, Claro, Movistar)",Ham,,
+Agradecemos su pronta atención y colaboración con EMETRA.",otro,Spam,,
+23,"Felicidades fuiste seleccionado para participar en un viaje todo pagado, para reclamar tu cupo haz click en este link",premios,Spam,,
+24,"Claro: tus 10460 puntos estan por vencer. no pierdas la oportunidad, canjea tus recompensas exclusivas ahora.   https://claroppoecs.cc/ec",premios,Spam,,
+25,Remitente desconocido: <#> 64763 es tu código de confirmación de Facebook Laz+nxCarLW,paquetes_envios,Spam,,
+26,"No hemos logrado contactarlo, visite el siguiente link para coordinar la entrega de su paquete.",paquetes_envios,Spam,,
+27,¡Felicidades! Has ganado un Smartphone 5G de Tigo. Haz clic aquí para confirmar tus datos y reclamarlo: tigo-premio-seguro.com/xyz,promo_operadora,Ham,,
+28,Eres un cliente DIAMANTE! Claro Premia tu Fidelidad. Marca al *999# y elige el paquete que mas te guste totalmente GRATIS. Nada mejor que ser CLARO!,promo_operadora,Ham,,
+29,Confirmación de entrega de pedido,confirmacion_compra,Ham,,
+30,Confirmar pedido,,Ham,,
+31,Bicredit: Te recordamos que tienes un cambio de categoria de tu tarjeta de debito actual confirma tu direccion de entrega aqui https://bi.gt/36hBVNr,notificacion_bancaria,Ham,,
+32,¡No te pierdas nuestra Pizza 5 Carnes por solo Q60! Pidela ahora por WhatsApp y disfruta sin salir de casa http://bc4.io/ed892df,publicidad,Ham,,
+33,Disfruta del sabor de la pizza de 1 ingrediente + 6 piezas de pollo + 3 flanes por Q169. Valido llamando al 1777. Mas informacion aqui http://bc4.io/b0147cf,publicidad,Ham,,
+34,Su codigo de verificacion para Claude es: 081577,,Ham,,
+35,Confirmación de pedido,confirmacion_compra,Ham,,
+36,Sabías que tienes efectivo disponible ,notificacion_bancaria,Ham,,
+37,Confirmación de entrega,confirmacion_compra,Ham,,
+38,Hola para visualizar el voucher de la compra realizada en CASTORS PIZZA ZONA 4 DELIVERY accede aqui: https://nn.gt/22f52481be59  Gracias por utilizar NeoNet!,confirmacion_compra,Ham,,
+39,Use el código 708834 para autenticar Microsoft,,Ham,,
+40,Potencia tu Plan tu Plan POSTPAGO! y disfruta de apps incluidas y mas datos. Haz clic y lleva tu experiencia al siguiente nivel! https://tgo.gt/b92,promo_operadora,Ham,,
+41,"BANRURAL: Amigo, tu codigo para TRANSFERENCIA A OTROS BANCOS-ACH es: 799126. Expira en 1 min. NO compartas este codigo con nadie. Banrural NUNCA te lo pedira.",notificacion_bancaria,Ham,,
+42,Tigo en línea - Confirmación de pago ,promo_operadora,Ham,,
+43,Tigo Security analiza los enlaces en tiempo real y te advierte de posibles virus! No te arriesgues! Activalo aqui https://tgo.gt/psh5,promo_operadora,Ham,,
+44,"Vive el Mundial como se debe. Por ser cliente de Tigo Residencial, tu acceso YA ESTA INCLUIDO, con 34 partidos en exclusiva. Consulta los partidos aqui: https://tgo.gt/20m. Si tienes algun inconveniente con tu caja ingresa aqui: http://tgo.gt/cdarcanal",promo_operadora,Ham,,
 45,"Aviso informativo:
 Tu cuenta registra 8,150 puntos BI disponibles para canje.
 
 https://servicioccanje.club/gt
 
-Realiza el canje dentro del plazo establecido.","Notificación bancaria (movimiento, saldo, alerta)",Ham,,
-46,"Llevas consumido el 80% de tu plan. Para consultar tu consumo de datos, visita GRATIS aqui http://tgo.gt/consumo","Promoción o aviso de operadora (Tigo, Claro, Movistar)",Ham,,
-47,"No te quedes fuera del mundial: todos los partidos EN VIVO y en 4K, plataformas incluidas y WiFi con extensores para tu hogar. Activa hoy http://tgop.gt/0/Rv8A9/fmcbrz ","Promoción o aviso de operadora (Tigo, Claro, Movistar)",Ham,,
-48,"Contrata tigo residencial ahora y no te quedes fuera, asegura tu acceso exclusivo a partidos del mundial  2026","Promoción o aviso de operadora (Tigo, Claro, Movistar)",Ham,,
+Realiza el canje dentro del plazo establecido.",notificacion_bancaria,Ham,,
+46,"Llevas consumido el 80% de tu plan. Para consultar tu consumo de datos, visita GRATIS aqui http://tgo.gt/consumo",promo_operadora,Ham,,
+47,"No te quedes fuera del mundial: todos los partidos EN VIVO y en 4K, plataformas incluidas y WiFi con extensores para tu hogar. Activa hoy http://tgop.gt/0/Rv8A9/fmcbrz ",promo_operadora,Ham,,
+48,"Contrata tigo residencial ahora y no te quedes fuera, asegura tu acceso exclusivo a partidos del mundial  2026",promo_operadora,Ham,,
 49,"Estimado cliente,
 Por este medio remitimos estado de cuenta de Monetarios correspondiente a Febrero 2026.
 Para garantizar la entrega de este mensaje, adicione correspondenciabi@corporacionbi.gt a su libreta de direcciones o lista de remitentes seguros. Por favor no responda a este correo.
-Si desea hacer alguna consulta sobre su Estado de Cuenta puede escribirnos al correo biconsulta@bi.com.gt.","Notificación bancaria (movimiento, saldo, alerta)",Ham,,
-50,Confirmación de datos de pedido,Confirmación de compra o entrega,Ham,,
-51,Promoción de Claro ,"Promoción o aviso de operadora (Tigo, Claro, Movistar)",Ham,,
-52,"Bienvenido a Tigo, tu numero de ticket es S 148, muy pronto seras atendido por uno de nuestros asesores.","Promoción o aviso de operadora (Tigo, Claro, Movistar)",Ham,,
-53,"Burger King: Hasbro llego al Menu infantil. Transformers, Furby, My Little Pony y Nerf te esperan.  Ordena los tuyos por App: https://s.bk.gt/HBAPP",Otro,Ham,,
-54,BANCO GTC: Estimado cliente has iniciado sesion en tu banca en linea:24/03/2026 12:15:51. Si no realizaste esta accion comunicate al 1718.,"Notificación bancaria (movimiento, saldo, alerta)",Ham,,
-55,"Promoción de Tigo, Claro o Movistar","Promoción o aviso de operadora (Tigo, Claro, Movistar)",Ham,,
-56,Tramites gubernamentales,"Aviso gubernamental (SAT, IGSS, Renap, Migración)",Ham,,
-57,"Renova tu plan Postpago y disfruta de DOBLE NAVEGACION durante todo tu contrato, Visita tiendas CLARO y conoce las increibles promociones que tenemos para ti.","Promoción o aviso de operadora (Tigo, Claro, Movistar)",Ham,,
-58,"BANRURAL: Amigo, en cajero automatico se Debito de tu cuenta Monetaria ****8546 Q.100.00 en: la torre mariscal II coloGUATE","Notificación bancaria (movimiento, saldo, alerta)",Ham,,
-59,"Consumo PROMERICA **1597 Monto 2,000 quetzales Comercio POPS Guatemala GT 25/03/26 06:46:22 Aut. 583606","Notificación bancaria (movimiento, saldo, alerta)",Ham,,
+Si desea hacer alguna consulta sobre su Estado de Cuenta puede escribirnos al correo biconsulta@bi.com.gt.",notificacion_bancaria,Ham,,
+50,Confirmación de datos de pedido,confirmacion_compra,Ham,,
+51,Promoción de Claro ,promo_operadora,Ham,,
+52,"Bienvenido a Tigo, tu numero de ticket es S 148, muy pronto seras atendido por uno de nuestros asesores.",promo_operadora,Ham,,
+53,"Burger King: Hasbro llego al Menu infantil. Transformers, Furby, My Little Pony y Nerf te esperan.  Ordena los tuyos por App: https://s.bk.gt/HBAPP",otro,Ham,,
+54,BANCO GTC: Estimado cliente has iniciado sesion en tu banca en linea:24/03/2026 12:15:51. Si no realizaste esta accion comunicate al 1718.,notificacion_bancaria,Ham,,
+55,"Promoción de Tigo, Claro o Movistar",promo_operadora,Ham,,
+56,Tramites gubernamentales,aviso_gubernamental,Ham,,
+57,"Renova tu plan Postpago y disfruta de DOBLE NAVEGACION durante todo tu contrato, Visita tiendas CLARO y conoce las increibles promociones que tenemos para ti.",promo_operadora,Ham,,
+58,"BANRURAL: Amigo, en cajero automatico se Debito de tu cuenta Monetaria ****8546 Q.100.00 en: la torre mariscal II coloGUATE",notificacion_bancaria,Ham,,
+59,"Consumo PROMERICA **1597 Monto 2,000 quetzales Comercio POPS Guatemala GT 25/03/26 06:46:22 Aut. 583606",notificacion_bancaria,Ham,,
 0,,,Spam,"Banrural informa: Tu préstamo pre-aprobado por Q20,000 ya está listo. Si no fuiste vos el que lo pidió, llamá urgente al 2200-1122."," Financiero (préstamos, inversiones, criptomonedas, pólizas, cheques)"
 1,,,Spam,"Alerta BAM: Cargo retenido por Q5,500 para compra de criptomonedas. Si usted no autorizó esto, cancele inmediatamente en http://bam-seguridad-gt.com"," Financiero (préstamos, inversiones, criptomonedas, pólizas, cheques)"
 2,,,Spam,"SAT notifica: Cheque internacional por Q35,000 a su nombre ha sido bloqueado. Pague la póliza de liberación de Q800 hoy. Información al 4545-6677."," Financiero (préstamos, inversiones, criptomonedas, pólizas, cheques)"

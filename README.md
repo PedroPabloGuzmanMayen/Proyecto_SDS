@@ -142,9 +142,61 @@ Se obtuvieron resultados bastante interesantes y se demostró porque era necesar
 
 ## Parte 2: Limpieza y generación sintética
 
+### Generación de mensajes de texto
+
 Luego de obtener los datos 
 
 El proceso de limpieza y generación de data sintética se encuentra en: [Generación de datos](src/data_generator.ipynb)
+
+Se realizaron las siguientes operaciones:
+
+
+- Separar el dataset en 2 partes : una con los mensajes maliciosos introducidos en el 5to campo de la encuesta y la otra con el resto de mensajes, conservar solo la categoría (intoriducida en los campos 7 y 4 de la encuesta ) de cada mensaje.
+
+- Una vez separado, crear el campo *tipo* el cuál indica si un mensaje es malicioso o no. 
+
+- Una vez que ambas partes tiene la misma estructura, concatenar ambos dataframes. El resultado de esta operación puede verse en el archivo: [dataset_tranformed.csv](data/dataset_tranformed.csv)
+
+Se obtuvieron 40 resultados, sin embargo para entrenar un modelo se necesita una mayor cantidad de información. Por esa razón se uso la API de *Google Gemini* con el modelo *Gemini 3 Pro Preview* con el siguiente prompt:
+
+```python
+
+    prompt = f"""
+Eres un experto en ciberseguridad guatemalteco analizando SMS fraudulentos.
+
+Dado este mensaje SMS original:
+- Texto: "{row['Mensaje']}"
+- Tipo: "{row['tipo']}"
+- Categoría: "{row['Categoria']}"
+
+Genera exactamente 8 variaciones sintéticas que:
+- Mantengan la misma etiqueta ({row['tipo']}) y categoría ({row['Categoria']})
+- Usen instituciones guatemaltecas reales (EMETRA, SAT, Banrural, BAM, IGSS, Tigo, Claro, Renap, Migración)
+- Usen español guatemalteco natural (mezcla de vos/usted según contexto)
+
+{"Para variaciones SPAM (fraudulentos): Variar nivel de urgencia (mayoría sutil), incluir URLs falsas (.icu, .xyz, .info, .tk, bit.ly), variar montos entre Q150 y Q5,000" if row['tipo'] == 'spam' else "Para variaciones HAM (legítimos): NO incluir URLs sospechosas, mantener tono formal e institucional, variar montos, fechas y detalles menores"}
+
+Responde ÚNICAMENTE con un array JSON válido con exactamente 8 objetos, sin texto adicional:
+[
+  {{
+    "texto": "texto completo del SMS",
+    "categoria": "{row['Categoria']}",
+    "tipo": "{row['tipo']}"
+  }}
+]
+"""
+
+```
+
+Se le especifico al modelo que a la hora de generar mensages de tipo spam no usuara un tono que relfejara urgencia, pues la worldcloud de los resultados de la encuesta mostró que los mensajes maliciosos no usan palabras como *Alerta*, *Urgente* para generar miedo en el receptor del mensaje, si no que más bien se usan palabras como *Multa*, *Mora*, *Recargo* . Se le pidió generar al menos 8 variaciones por mensaje para obtetner una muestra de más de 500 mensajes para entrenar el modelo. 
+
+Los mensajes generados sintéticamente se encuentran en el archivo: [dataset_sintetico.csv](data/dataset_sintetico.csv) y el dataset con los mesajes reales y sintéticos unificados se encuentra en el archivo: [dataset_smishing.csv](data/dataset_smishing.csv)
+
+### Generación de whitelist
+
+Finalmente, se le solicito al modelo *Claude 4.6 Sonet* con el MCP de búsqueda en internet que encontrará los números de teléfono de las instituciones bancarias, operadoras telfónicas, empresas de paquetería y cadenas de restaurantes más famosas en Guatemala y en base a los resultados de la búsqueda generar una whitelist. Los resultados se encuentran en el archivo: [whitelist.csv](data/whitelist.csv)
+
+
 
 ## Parte 3 
 

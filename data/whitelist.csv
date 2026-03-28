@@ -1,0 +1,42 @@
+,institucion,categoria,numero,numero_normalizado,tipo_numero,canal,descripcion,shortcode,whatsapp,fuente
+0,Tigo Guatemala,telecomunicaciones,24280000,+50224280000,fijo,call_center,Atención al cliente Tigo (desde cualquier teléfono),,True,tigo.com.gt
+1,Tigo Guatemala,telecomunicaciones,*611,,shortcode,call_center,Atención al cliente Tigo (desde línea Tigo),*611,False,tigo.com.gt
+2,Tigo Money,telecomunicaciones,24280041,+50224280041,fijo,call_center,Atención al cliente Tigo Money,,True,ayudagt.tigomoney.com
+3,Tigo Money,telecomunicaciones,*987,,shortcode,call_center,Atención Tigo Money (desde celular Tigo),*987,False,ayudagt.tigomoney.com
+4,Claro Guatemala,telecomunicaciones,147100,,shortcode,call_center,Servicio al cliente Claro (desde Claro o línea fija),147100,False,@claroguatemala Twitter oficial
+5,Claro Guatemala,telecomunicaciones,22056295,+50222056295,fijo,call_center,Línea alterna atención al cliente Claro,,False,claro.com.gt
+6,Banco Industrial (BI),banca,1717,,shortcode,contact_center,Contact Center Banco Industrial — 24/7,1717,False,corporacionbi.com/gt/bancoindustrial
+7,BAM (Banco Agromercantil),banca,23386565,+50223386565,fijo,contact_center,Contact Center BAM — atención general y tarjetas,,False,bam.com.gt
+8,Banrural,banca,1720,,shortcode,contact_center,Centro de Contacto Banrural,1720,False,tarjetasbanrural.com
+9,Banrural,banca,23266810,+50223266810,fijo,contact_center,Teléfono directo Banrural tarjetas,,False,tarjetasbanrural.com
+10,Banrural,banca,23083000,+50223083000,fijo,banca_virtual,Asistencia banca virtual Banrural,,False,bancavirtual.banrural.com.gt
+11,BAC Credomatic Guatemala,banca,1800,,shortcode,contact_center,Contact Center BAC Guatemala — 24/7 tarjetas y banca,1800,False,baccredomatic.com/es-gt
+12,BAC Credomatic Guatemala,banca,22782000,+50222782000,fijo,contact_center,Teléfono directo BAC Guatemala,,False,baccredomatic.com/es-gt
+13,G&T Continental,banca,1500,,shortcode,contact_center,Contact Center G&T Continental,1500,False,gtcontinental.com.gt
+14,G&T Continental,banca,24101500,+50224101500,fijo,contact_center,Teléfono directo G&T Continental,,False,gtcontinental.com.gt
+15,Banco de los Trabajadores (Bantrab),banca,1503,,shortcode,contact_center,Contact Center Bantrab,1503,False,bantrab.com.gt
+16,Banco de los Trabajadores (Bantrab),banca,24101503,+50224101503,fijo,contact_center,Teléfono directo Bantrab,,False,bantrab.com.gt
+17,Vivibanco (Banco Vivibanco),banca,23690000,+50223690000,fijo,contact_center,Atención al cliente Vivibanco Guatemala,,False,vivibanco.com.gt
+18,Citibank Guatemala,banca,18002288888,,toll_free,contact_center,Línea gratuita Citibank Guatemala,,False,citibank.com.gt
+19,SAT (Superintendencia de Administración Tributaria),gobierno,1550,,shortcode,call_center,Línea SAT para atención al contribuyente,1550,False,@SATGT Twitter oficial
+20,SAT (Superintendencia de Administración Tributaria),gobierno,22174000,+50222174000,fijo,call_center,Teléfono directo SAT atención al contribuyente,,False,@SATGT Twitter oficial
+21,IGSS (Instituto Guatemalteco de Seguridad Social),gobierno,1522,,shortcode,contact_center,Centro de Contacto IGSS,1522,False,igssgt.org/contactenos
+22,IGSS (Instituto Guatemalteco de Seguridad Social),gobierno,24121224,+50224121224,fijo,contact_center,Teléfono directo IGSS,,False,igssgt.org/contactenos
+23,RENAP (Registro Nacional de las Personas),gobierno,1516,,shortcode,call_center,Call Center RENAP,1516,False,renap.gob.gt
+24,RENAP (Registro Nacional de las Personas),gobierno,24161900,+50224161900,fijo,pbx,PBX RENAP (opción 2 para Centro de Información),,False,renap.gob.gt
+25,RENAP (Registro Nacional de las Personas),gobierno,42107327,+50242107327,movil,whatsapp,WhatsApp oficial RENAP,,True,renap.gob.gt
+26,IGM (Instituto Guatemalteco de Migración),gobierno,24112411,+50224112411,fijo,central,Línea central Instituto Guatemalteco de Migración,,False,igm.gob.gt
+27,EMETRA (Empresa Metropolitana de Transporte),gobierno,1551,,shortcode,emergencias,Emergencias viales y Policía Municipal de Tránsito,1551,False,mundochapin.com
+28,EMETRA (Empresa Metropolitana de Transporte),gobierno,22858400,+50222858400,fijo,central,Teléfono directo EMETRA,,False,mundochapin.com
+29,DHL Guatemala,paqueteria,23901100,+50223901100,fijo,call_center,Atención al cliente DHL Guatemala,,False,@dhlguatemala Twitter oficial
+30,FedEx Guatemala,paqueteria,24112100,+50224112100,fijo,call_center,Servicio al cliente FedEx — desde cualquier teléfono en Guatemala,,False,fedex.com/es-gt/customer-support/call-us.html
+31,FedEx Guatemala,paqueteria,1801003339,,toll_free,call_center,Línea gratuita FedEx Guatemala,1801003339,False,fedex.com/es-gt/customer-support/call-us.html
+32,Guatex,paqueteria,23230500,+50223230500,fijo,call_center,"Central Guatex — Zona 12, Ciudad de Guatemala",,False,latinoplaces.com (directorio verificado)
+33,Cargo Expreso,paqueteria,24744444,+50224744444,fijo,call_center,Call center Cargo Expreso — rastreo y atención al cliente,,False,cargoexpreso.com / guaterastreo.com
+34,PedidosYa Guatemala,delivery_app,36918935,+50236918935,movil,soporte_cliente,Soporte PedidosYa Guatemala (ex-Hugo),,True,numeroservicioalcliente.com — PedidosYa Guatemala
+35,Pollo Campero Guatemala,restaurante_cadena_gt,web_app_only,,web_app_only,app_web,Pedidos solo vía app/web — cualquier SMS con número es sospechoso,,False,campero.com/gt
+36,McDonald's Guatemala,restaurante_cadena_intl,24154600,+50224154600,fijo,servicio_cliente,Servicio al cliente McDonald's Guatemala (corporativo),,False,Facebook oficial McDonald's Guatemala
+37,McDonald's Guatemala,restaurante_cadena_intl,44701770,+50244701770,movil,whatsapp_pedidos,WhatsApp pedidos McDelivery Guatemala,,True,mcdonalds.com.gt/mcdelivery
+38,McDonald's Guatemala,restaurante_cadena_intl,23606363,+50223606363,fijo,contact_center_pedidos,Teléfono McDelivery — pedidos y reclamos domicilio,,False,mcdonalds.com.gt/mcdelivery
+39,Burger King Guatemala,restaurante_cadena_intl,22000000,+50222000000,fijo,call_center_pedidos,Call center y WhatsApp Burger King Guatemala,,True,info.bk.gt/llamanos
+40,Pizza Hut Guatemala,restaurante_cadena_intl,1744,,shortcode,call_center_pedidos,Línea directa Pizza Hut domicilio Guatemala,1744,False,directorio.guatemala.com
