@@ -12,7 +12,9 @@ Sin embargo, en Guatemala no se ha realizado mucha investigación al respecto y 
 
 ## Parte 1: Obtención de datos
 
-Este tipo de estafas son muy frecuentes en Guatemala, por lo que gran parte de los ciudadanos guatemaltecos han recibido alguna vez un mensaje de texto con intención maliciosa. Por lo tanto, se decidió hacer una encuesta a una parte de la población guatemalteca en la que se recopila información sobre los mensajes sospechosos o maliciosos que hayan recibido alguna vez, en la encuesta también se pide información de mensajes legítimos como promociones de empresas telefónicas y restaurantes, comprobantes de transacciones bancarias o solicitudes de autenticación. Cabe aclarar que todos los datos recopliados en la encuesta fueron anónimos y que los participantes aceptaron compartir la información de sus mensajes recibidos de forma voluntaria. 
+Este tipo de estafas son muy frecuentes en Guatemala, por lo que gran parte de los ciudadanos guatemaltecos han recibido alguna vez un mensaje de texto con intención maliciosa. Por lo tanto, se decidió hacer una encuesta a través de *Microsoft Forms* a una parte de la población guatemalteca en la que se recopila información sobre los mensajes sospechosos o maliciosos que hayan recibido alguna vez, en la encuesta también se pide información de mensajes legítimos como promociones de empresas telefónicas y restaurantes, comprobantes de transacciones bancarias o solicitudes de autenticación. 
+
+*Cabe aclarar que todos los datos recopliados en la encuesta fueron anónimos y que los participantes aceptaron voluntariamente compartir la información de sus mensajes recibidos.* 
 
 La encuesta fue respondida por un total de 40 participantes, de los cuales 39 aceptaron participar voluntariamente.
 
@@ -30,11 +32,9 @@ No
 
 Resultados:
 
-![image1](imgs/survey_1.png)
-
 <div align="center">
   <img src="imgs/survey_1.png" width="500"/>
-  <p><em>Figura 1: Resultados de la encuesta</em></p>
+  <p><em>Figura 1: Resultados de la primera pregunta de la encuesta</em></p>
 </div>
 
 Propósito:
@@ -47,8 +47,10 @@ Pregunta:
 
 Resultados:
 
-Sí: 38
-No: 2
+<div align="center">
+  <img src="imgs/survey_2.png" width="500"/>
+  <p><em>Figura 2: Resultados de la segunda pregunta de la encuesta</em></p>
+</div>
 
 Propósito:
 Determinar la prevalencia de este tipo de mensajes en la población y validar la relevancia del problema en el contexto guatemalteco.
@@ -58,14 +60,12 @@ Determinar la prevalencia de este tipo de mensajes en la población y validar la
 Pregunta:
 ¿De quién decía ser el mensaje?
 
-Resultados principales:
+Resultados: 
 
-Empresa de paquetería o envíos: 10
-Operadora telefónica: 6
-Institución del gobierno: 5
-Empresa o empleador: 5
-Banco o entidad financiera: 4
-No identificado / desconocido: 7
+<div align="center">
+  <img src="imgs/survey_2.png" width="500"/>
+  <p><em>Figura 3: Resultados de la tercera pregunta de la encuesta</em></p>
+</div>
 
 Propósito:
 Identificar los tipos de entidades que los atacantes suelen suplantar, lo cual permite definir características relevantes para el modelo de clasificación.
@@ -75,12 +75,12 @@ Identificar los tipos de entidades que los atacantes suelen suplantar, lo cual p
 Pregunta:
 ¿A qué categoría pertenece la estafa que intentaron hacerle?
 
-Resultados principales:
+Resultados: 
 
-Paquetes y envíos: 13
-Premios y recompensas: 8
-Servicios y trabajo: 6
-Otras categorías: menor frecuencia
+<div align="center">
+  <img src="imgs/survey_4.png" width="500"/>
+  <p><em>Figura 4: Resultados de la cuarta pregunta de la encuesta</em></p>
+</div>
 
 Propósito:
 Clasificar los distintos tipos de ataques y entender los patrones más comunes utilizados en mensajes maliciosos.
@@ -93,10 +93,12 @@ Escriba el texto del primer SMS sospechoso que recibió.
 Respuestas obtenidas:
 29 respuestas válidas.
 
-Ejemplos:
+Resultados:
 
-"No hemos logrado contactarlo, visite el siguiente link para coordinar la entrega de su paquete."
-"Remitente desconocido: <#> 64763 es tu código de confirmación de Facebook..."
+<div align="center">
+  <img src="imgs/survey_5.png" width="500"/>
+  <p><em>Figura 5: Resultados de la quinta pregunta de la encuesta</em></p>
+</div>
 
 Propósito:
 Recopilar datos reales para construir el dataset de mensajes maliciosos que será utilizado en el entrenamiento del modelo.
@@ -106,13 +108,12 @@ Recopilar datos reales para construir el dataset de mensajes maliciosos que ser�
 Pregunta:
 Escriba el texto de un SMS legítimo que haya recibido recientemente.
 
-Respuestas obtenidas:
-35 respuestas válidas.
+Resultados:
 
-Ejemplos:
-
-"Consumo PROMERICA... Monto 2,000 quetzales..."
-"BANRURAL: Amigo, en cajero automático se debitó de tu cuenta..."
+<div align="center">
+  <img src="imgs/survey_6.png" width="500"/>
+  <p><em>Figura 6: Resultados de la sexta pregunta de la encuesta</em></p>
+</div>
 
 Propósito:
 Obtener ejemplos de mensajes legítimos para entrenar el modelo y evitar sesgos en la clasificación.
@@ -122,34 +123,40 @@ Obtener ejemplos de mensajes legítimos para entrenar el modelo y evitar sesgos 
 Pregunta:
 ¿De qué tipo es el mensaje legítimo?
 
-Resultados principales:
+Resultados:
 
-Promociones de operadoras: 14
-Notificaciones bancarias: 8
-Confirmaciones de compra o entrega: 5
-Códigos de verificación (2FA): 3
+<div align="center">
+  <img src="imgs/survey_7.png" width="500"/>
+  <p><em>Figura 7: Resultados de la séptima pregunta de la encuesta</em></p>
+</div>
 
 Propósito:
 Categorizar los mensajes legítimos y comprender sus características para diferenciarlos de los mensajes maliciosos.
 
 
-### Primera pregunta
+### Análisis de los resultados
 
--  ¿Aceptas participar voluntariamente en esta encuesta? 
-
-Posibles respuestas: 
-
-- Si
-- No
-
-Propósito: 
-
-
-
-En la sección de anexos se puede ver más a detalle los resultados obtenidos en esta encuesta. 
-
+Se obtuvieron resultados bastante interesantes y se demostró porque era necesario desarollar un dataset de mensajes de texto legítimos y maliciosos adaptado al contexto guatemalteco pues a pesar de ser una muestra pequeña, vemos que las palabras más utilizadas son muy diferentes a las del dataset de mensajes spam en español de [Hugging face](https://huggingface.co/datasets/softecapps/spam_ham_spanish), en Guatemala el phishing se relaciona más a multas, entrega de productos y dinero (sale el lexema 00) mientras que en el resto del mundo las estafas se centran más on ofrecer algo gratis o ganar un premio. Se puede ver la worldcloud del dataset anteriormente mencionado en la sección de anexos
 
 ## Parte 2: Limpieza y generación sintética
 
+Luego de obtener los datos 
+
+El proceso de limpieza y generación de data sintética se encuentra en: [Generación de datos](src/data_generator.ipynb)
+
 ## Parte 3 
 
+## Anexos
+
+1. 
+<div align="center">
+  <img src="wordcloud_ham.png" width="500"/>
+  <p><em>Figura X: Worldcloud de los mensajes legítmos dataset de mensajes de SPAM de Hugging Face </em></p>
+</div>
+
+2. 
+
+<div align="center">
+  <img src="wordcloud_spam.png" width="500"/>
+  <p><em>Figura X: Worldcloud de los mensajes legítmos dataset de mensajes de SPAM de Hugging Face </em></p>
+</div>
