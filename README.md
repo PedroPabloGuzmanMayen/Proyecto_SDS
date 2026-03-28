@@ -1,5 +1,8 @@
 # Fase 1: implementación
 
+- Pedro Pablo Guzmán Mayen 22111
+- Javier Andres Chen Gonzalez 22153
+
 ## Introducción
 
 Esta investigación busca el desarrollo de un modelo de aprendizaje automático que sea capaz de identificar si un mensaje SMS en Guatemala es malicioso o no haciendo uso de 3 vectores de ataque: 
