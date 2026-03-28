@@ -274,18 +274,17 @@ Finalmente, se vectorizó cada mensaje usando *TF_IDF*
 El proceso completo se puede ver en el archivo [Proyecto_implementación.ipynb](src/Proyecto_implementacion.ipynb) y el dataset final con todas las características está en [dataset_smishing_features.csv](data/dataset_smishing_features)
 
 
-
 ## Anexos
 
 1. 
 <div align="center">
   <img src="imgs/wordcloud_ham.png" width="500"/>
-  <p><em>Figura X: Worldcloud de los mensajes legítmos dataset de mensajes de SPAM de Hugging Face </em></p>
+  <p><em>Figura 13: Worldcloud de los mensajes legítmos dataset de mensajes de SPAM de Hugging Face </em></p>
 </div>
 
 2. 
 
 <div align="center">
   <img src="imgs/wordcloud_spam.png" width="500"/>
-  <p><em>Figura X: Worldcloud de los mensajes legítmos dataset de mensajes de SPAM de Hugging Face </em></p>
+  <p><em>Figura 14: Worldcloud de los mensajes legítmos dataset de mensajes de SPAM de Hugging Face </em></p>
 </div>
