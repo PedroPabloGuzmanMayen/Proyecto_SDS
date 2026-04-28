@@ -9,7 +9,7 @@ Esta investigación busca el desarrollo de un modelo de aprendizaje automático 
 
 - El contenido del mensaje
 - El emisor del mensaje
-- Metadata asociada al mensaje como presencia de URLs, longitud del mensaje, presencia de palabras de ugencia, etc
+- Metadata asociada al mensaje como presencia de URLs, longitud del mensaje, presencia de palabras de urgencia, etc
 
 Sin embargo, en Guatemala no se ha realizado mucha investigación al respecto y no hay datos oficiales o datasets que tengan registro de los mensajes de texto que tengan una intención maliciosa. Tampoco existen bases de datos que contengan mensajes con información legítima como comprobantes de pago, solicitudes código de verificación, etc. Por esa razón, en este informe se enumeran los procedimientos realizados para generar un dataset que contenga esta información
 
