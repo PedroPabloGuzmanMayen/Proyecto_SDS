@@ -6,3 +6,4 @@ dotenv
 ipykernel
 scikit-learn
 wordcloud
+joblib
