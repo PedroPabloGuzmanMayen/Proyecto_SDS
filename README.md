@@ -1,4 +1,4 @@
-# Fase 1: implementación
+# Fase 2: implementación de modelos de Machine learning
 
 - Pedro Pablo Guzmán Mayen 22111
 - Javier Andres Chen Gonzalez 22153
@@ -11,280 +11,229 @@ Esta investigación busca el desarrollo de un modelo de aprendizaje automático 
 - El emisor del mensaje
 - Metadata asociada al mensaje como presencia de URLs, longitud del mensaje, presencia de palabras de urgencia, etc
 
-Sin embargo, en Guatemala no se ha realizado mucha investigación al respecto y no hay datos oficiales o datasets que tengan registro de los mensajes de texto que tengan una intención maliciosa. Tampoco existen bases de datos que contengan mensajes con información legítima como comprobantes de pago, solicitudes código de verificación, etc. Por esa razón, en este informe se enumeran los procedimientos realizados para generar un dataset que contenga esta información
+Sin embargo, en Guatemala no se ha realizado mucha investigación al respecto y no hay datos oficiales o datasets que tengan registro de los mensajes de texto que tengan una intención maliciosa. Tampoco existen bases de datos que contengan mensajes con información legítima como comprobantes de pago, solicitudes código de verificación, etc. Por esa razón, en este informe se enumeran los procedimientos realizados para generar un dataset que contenga esta información. 
 
-## Parte 1: Obtención de datos
+En la fase anterior de esta proyecto, se logró generar con éxito un dataset con 540 muestras de mensajes de texto legítimos e ilegítimos adaptados al contexto guatemalteco, puede ver el dataset aquí: [Dataset_smishing](https://www.kaggle.com/datasets/pedropabloguzmnmayn/smishing-guatemala) y puede aprender más sobre su proceso de creación en esta archivo: [Generación de datos](src/data_generator.ipynb)
 
-Este tipo de estafas son muy frecuentes en Guatemala, por lo que gran parte de los ciudadanos guatemaltecos han recibido alguna vez un mensaje de texto con intención maliciosa. Por lo tanto, se decidió hacer una encuesta a través de *Microsoft Forms* a una parte de la población guatemalteca en la que se recopila información sobre los mensajes sospechosos o maliciosos que hayan recibido alguna vez, en la encuesta también se pide información de mensajes legítimos como promociones de empresas telefónicas y restaurantes, comprobantes de transacciones bancarias o solicitudes de autenticación. 
+## Datos generales del desarrollo de ambos modelos
 
-*Cabe aclarar que todos los datos recopliados en la encuesta fueron anónimos y que los participantes aceptaron voluntariamente compartir la información de sus mensajes recibidos.* 
+Como se mencionó anteriormente, se van a analizar 3 vectores de ataque: una lista blanca de números telefónicos conocidos, metadata del mensaje y el contenido en sí del mensaje, por lo tanto, se evaluaron dos enfoques distintos:
 
-La encuesta fue respondida por un total de 40 participantes, de los cuales 39 aceptaron participar voluntariamente.
+Modelos basados en contenido del mensaje — utilizando representaciones textuales (TF-IDF y embeddings).
+Modelos basados en características engineered — utilizando señales heurísticas extraídas de cada mensaje.
 
-La encuesta contenía 7 preguntas, a continuación se describe el propósito de cada una de ellas y los resultados obtenidos:
+Todos los modelos se entrenaron con una división 70/30 (entrenamiento/prueba), con estratificación para preservar la proporción de clases, y se optimizaron mediante GridSearchCV con validación cruzada.
 
-1. Consentimiento de participación
+## Modelos Basados en Contenido del Mensaje
 
-Pregunta:
-¿Aceptas participar voluntariamente en esta encuesta?
+### Regresión Logística con TF-IDF
 
-Posibles respuestas:
+Se realizó primero un modelo de regresión logística usando las columnas TF-IDF, la regresión logística es un buen clasificador binario y el SPAM por lo general suele identificarse con bastante éxito con TF-IDF, por esa razón se hizo la elección de este modelo. 
 
-Sí
-No
+Se uso el siguiente espacio de búsqueda y configuración con gridsearch:
 
-Resultados:
+- Optimización: GridSearchCV con CV=15, scoring=f1
+- Espacio de búsqueda: $$C ∈ {0.01, 0.1, 0.5, 1, 5, 10, 15}$$, penalidades $$l1/l2$$, solver liblinear
 
-<div align="center">
-  <img src="imgs/survey_1.png" width="500"/>
-  <p><em>Figura 1: Resultados de la primera pregunta de la encuesta</em></p>
-</div>
+El mejor modelo es uno moderadamente flexible, con regularización suave (C=5), que mantiene todas las variables pero controla el tamaño de los coeficientes (L2), logrando el mejor balance entre precision y recall.
 
-Propósito:
-Garantizar que la participación en la encuesta sea completamente voluntaria y cumplir con principios éticos de recolección de datos.
+Estos fueron los resltados obtenidos: 
 
-2. Experiencia con SMS sospechosos
+| Clase | Precision | Recall | F1-Score |
+|---|---|---|---|
+| No Spam | 0.91 | 0.97 | 0.93 |
+| Spam | 0.96 | 0.88 | 0.91 |
+| **Accuracy** | | | **0.93** |
 
-Pregunta:
-¿Ha recibido alguna vez un SMS que le pareció sospechoso?
-
-Resultados:
+El modelo en general tuvo un buen rendimiento, identifica con éxito gran parte de los casos, sin embargo detecta de peor forma los mensajes maliciosos, hay al menos un 11% de diferencia entre el recall de la clase no spam y la de spam. 
 
 <div align="center">
-  <img src="imgs/survey_2.png" width="500"/>
-  <p><em>Figura 2: Resultados de la segunda pregunta de la encuesta</em></p>
+  <img src="imgs/matriz_conf_lr.png" width="500"/>
+  <p><em>Figura 1: matriz de confusión del modelo de regresión logística</em></p>
 </div>
 
-Propósito:
-Determinar la prevalencia de este tipo de mensajes en la población y validar la relevancia del problema en el contexto guatemalteco.
+### Red neuronal con embeddings
 
-3. Identidad del remitente
+Luego, se seleccionó una red neuronal para realizar el modelo usando los embeddings, la arquitectura elegida para el desarrollo de esta red neuronal fue la de multilayer perceptron, esto debido a que es una arquitectura que nos permite capturar patrones y relaciones ocultas en la información, además nuestra información está en forma de vectores densos y no tiene una relación espacial o temporal que debamos capturar. 
 
-Pregunta:
-¿De quién decía ser el mensaje?
+Espacio de búsqueda: 
+- Capas ocultas: una capa de 64 neuronas; una capa de 128 neuronas; dos capas, una de 128 neuronas y la otra de 64; tres capas, una de 256 neuronas, la siguiente de 128 y la última de 64; una capa de 256 neuronas. 
+- Funciones de activación: relu y tanh
+- $Regularización: ∈ {1e-4, 1e-3, 1e-2}$, 
+- $Learning_rate ∈ {1e-3, 1e-4}$>
 
-Resultados: 
+El mejor modelo es no es tan complejo, tiene una capa interna de 128 neuronas con función de activación relu, regularización de 0.001 y learning rate de 0.0001. 
+
+Estos fueron los resultados obtenidos por el modelo
+
+| Class | Precision | Recall | F1-Score |
+|-------|-----------|--------|----------|
+| No Spam | 0.98 | 0.98 | 0.98 |
+| Spam | 0.97 | 0.97 | 0.97 |
+| **Accuracy** | | | **0.98** | 
 
 <div align="center">
-  <img src="imgs/survey_2.png" width="500"/>
-  <p><em>Figura 3: Resultados de la tercera pregunta de la encuesta</em></p>
+  <img src="imgs/matriz_conf_nn.png" width="500"/>
+  <p><em>Figura 2: matriz de confusión de la red neuronal</em></p>
 </div>
 
-Propósito:
-Identificar los tipos de entidades que los atacantes suelen suplantar, lo cual permite definir características relevantes para el modelo de clasificación.
 
-4. Tipo de estafa
-
-Pregunta:
-¿A qué categoría pertenece la estafa que intentaron hacerle?
-
-Resultados: 
+### Comparación y selección
 
 <div align="center">
-  <img src="imgs/survey_4.png" width="500"/>
-  <p><em>Figura 4: Resultados de la cuarta pregunta de la encuesta</em></p>
+  <img src="imgs/matriz_conf_nn.png" width="500"/>
+  <p><em>Figura 3: curvas ROC de los modelos desarrolados para la detección de SPAM basada en conenido del mensaje</em></p>
 </div>
 
-Propósito:
-Clasificar los distintos tipos de ataques y entender los patrones más comunes utilizados en mensajes maliciosos.
+En base a los resultados anteriores, el modelo con mejor rendimiento es la red neuronal ya que identifica con mayor precisión ambas clases y no muestra señales de overfitting pues dichos resultados los alcanzó evaluando datos del conjunto de prueba que el modelo no había observado antes.  Por lo tanto, ese será el modelo que vamos a usar para identificar spam en base al contenido del mensaje. 
 
-5. Ejemplo de SMS sospechoso
 
-Pregunta:
-Escriba el texto del primer SMS sospechoso que recibió.
+## Desarrolo de modelos de machine learning para el análisis del contenido del mensaje
 
-Respuestas obtenidas:
-29 respuestas válidas.
+Ahora se van a implementar 2 modelos de machine learning para detectar mensajes fraudulentos, uno de ellos usará características del mensaje como la longitud, la cantidad de palabras urgentes, etc. El otro va a analizar el contenido del mensaje
 
-Resultados:
+### Random Forest
+
+Se entrenó un Random Forest optimizando recall mediante GridSearchCV con CV=5, priorizando la detección de mensajes maliciosos sobre la precisión.
+
+Espacio de búsqueda:
+- `n_estimators` ∈ {100, 200, 300}
+- `max_depth` ∈ {None, 10, 20}
+- `min_samples_split` ∈ {2, 5}
+- `class_weight` ∈ {balanced, None}
+
+El mejor modelo encontrado fue: `class_weight=balanced`, `max_depth=None`, `min_samples_split=2`, `n_estimators=300`, con un Recall en CV de **0.8235**.
+
+| Clase | Precision | Recall | F1-Score |
+|-------|-----------|--------|----------|
+| No Spam | 0.83 | 0.85 | 0.84 |
+| Spam | 0.81 | 0.78 | 0.80 |
+| **Accuracy** | | | **0.82** |
 
 <div align="center">
-  <img src="imgs/survey_5.png" width="500"/>
-  <p><em>Figura 5: Resultados de la quinta pregunta de la encuesta</em></p>
+  <img src="imgs/matriz_conf_rf.png" width="500"/>
+  <p><em>Figura 4: matriz de confusión del modelo de Random Forest</em></p>
 </div>
 
-Propósito:
-Recopilar datos reales para construir el dataset de mensajes maliciosos que será utilizado en el entrenamiento del modelo.
+### Gradient Boosting
 
-6. Ejemplo de SMS legítimo
+Se entrenó un modelo de Gradient Boosting también optimizando recall mediante GridSearchCV con CV=5.
 
-Pregunta:
-Escriba el texto de un SMS legítimo que haya recibido recientemente.
+Espacio de búsqueda:
+- `n_estimators` ∈ {100, 200}
+- `learning_rate` ∈ {0.05, 0.1, 0.2}
+- `max_depth` ∈ {3, 5}
 
-Resultados:
+El mejor modelo encontrado fue: `learning_rate=0.05`, `max_depth=3`, `n_estimators=100`, con un Recall en CV de **0.8235**.
+
+| Clase | Precision | Recall | F1-Score |
+|-------|-----------|--------|----------|
+| No Spam | 0.82 | 0.84 | 0.83 |
+| Spam | 0.80 | 0.78 | 0.79 |
+| **Accuracy** | | | **0.81** |
 
 <div align="center">
-  <img src="imgs/survey_6.png" width="500"/>
-  <p><em>Figura 6: Resultados de la sexta pregunta de la encuesta</em></p>
+  <img src="imgs/matriz_conf_gb.png" width="500"/>
+  <p><em>Figura 5: matriz de confusión del modelo de Gradient Boosting</em></p>
 </div>
 
-Propósito:
-Obtener ejemplos de mensajes legítimos para entrenar el modelo y evitar sesgos en la clasificación.
+### SVM
 
-7. Tipo de mensaje legítimo
+Se entrenó un SVM con kernel RBF dentro de un pipeline con StandardScaler, optimizando recall mediante GridSearchCV con CV=5.
 
-Pregunta:
-¿De qué tipo es el mensaje legítimo?
+Espacio de búsqueda:
+- `C` ∈ {0.1, 1, 10}
+- `gamma` ∈ {scale, auto}
+- `class_weight` ∈ {balanced, None}
 
-Resultados:
+El mejor modelo encontrado fue: `C=0.1`, `class_weight=balanced`, `gamma=scale`, con un Recall en CV de **0.8706**, el más alto de los tres modelos.
+
+| Clase | Precision | Recall | F1-Score |
+|-------|-----------|--------|----------|
+| No Spam | 0.82 | 0.78 | 0.80 |
+| Spam | 0.74 | 0.79 | 0.77 |
+| **Accuracy** | | | **0.78** |
 
 <div align="center">
-  <img src="imgs/survey_7.png" width="500"/>
-  <p><em>Figura 7: Resultados de la séptima pregunta de la encuesta</em></p>
+  <img src="imgs/matriz_conf_svm.png" width="500"/>
+  <p><em>Figura 6: matriz de confusión del modelo SVM</em></p>
 </div>
 
-Propósito:
-Categorizar los mensajes legítimos y comprender sus características para diferenciarlos de los mensajes maliciosos.
+### Importancia de características
 
+Antes de analizar las métricas, la gráfica de importancia del Random Forest revela qué señales del mensaje son más determinantes para la detección de smishing:
 
-Los resultados se encuentran en el archivo: [dataset_encuesta.csv](data/dataset_encuesta.csv)
+- **`url_suspicious` (0.31) y `has_url` (0.27)** son por lejos las características más importantes, acumulando casi el 58% del poder predictivo del modelo. Esto tiene sentido en el contexto de smishing: la mayoría de ataques dirigen a la víctima a un enlace malicioso para robar credenciales o instalar malware.
 
-### Análisis de los resultados
+- **`has_reward` (0.17)** ocupa el tercer lugar. Los mensajes de smishing frecuentemente prometen premios, descuentos o beneficios falsos para motivar al usuario a hacer clic.
 
-Se obtuvieron resultados bastante interesantes y se demostró porque era necesario desarollar un dataset de mensajes de texto legítimos y maliciosos adaptado al contexto guatemalteco pues a pesar de ser una muestra pequeña, vemos que las palabras más utilizadas son muy diferentes a las del dataset de mensajes spam en español de [Hugging face](https://huggingface.co/datasets/softecapps/spam_ham_spanish), en Guatemala el phishing se relaciona más a multas, entrega de productos y dinero (sale el lexema 00) mientras que en el resto del mundo las estafas se centran más on ofrecer algo gratis o ganar un premio. Se puede ver la worldcloud del dataset anteriormente mencionado en la sección de anexos
+- **`has_urgency` (0.09)** contribuye de forma moderada. El lenguaje de urgencia es una táctica psicológica común en phishing para presionar al usuario a actuar sin reflexionar.
 
-## Parte 2: Limpieza y generación sintética
+- Las características restantes (`has_cta`, `impersonation_url`, `has_threat`, `has_impersonation`) tienen importancias menores pero complementarias, capturando tácticas secundarias de los atacantes.
 
-### Generación de mensajes de texto
+Esta jerarquía confirma que los vectores de ataque principales en smishing son los enlaces maliciosos y las promesas de recompensa, mientras que amenazas y suplantación de identidad son tácticas de apoyo.
 
-Luego de obtener los datos 
+### Selección final
 
-El proceso de limpieza y generación de data sintética se encuentra en: [Generación de datos](src/data_generator.ipynb)
+Las curvas ROC confirman el ranking de los modelos en términos de capacidad discriminativa:
 
-Se realizaron las siguientes operaciones:
+| Modelo | Accuracy | Precision | Recall | F1 | AUC |
+|--------|----------|-----------|--------|----|-----|
+| Random Forest | 0.8210 | 0.8143 | 0.7808 | 0.7972 | 0.845 |
+| Gradient Boosting | 0.8148 | 0.8028 | 0.7808 | 0.7917 | 0.864 |
+| SVM RBF | 0.7840 | 0.7436 | 0.7945 | 0.7682 | **0.874** |
 
+<div align="center">
+  <img src="imgs/ROC_features.png" width="500"/>
+  <p><em>Figura 7: curvas ROC de los modelos basados en características engineered</em></p>
+</div>
 
-- Separar el dataset en 2 partes : una con los mensajes maliciosos introducidos en el 5to campo de la encuesta y la otra con el resto de mensajes, conservar solo la categoría (intoriducida en los campos 7 y 4 de la encuesta ) de cada mensaje.
+Los tres modelos superan ampliamente al clasificador aleatorio (AUC = 0.5), con AUCs entre 0.845 y 0.874, lo que indica que las características engineered tienen poder predictivo real para distinguir smishing de mensajes legítimos.
 
-- Una vez separado, crear el campo *tipo* el cuál indica si un mensaje es malicioso o no. 
+El **SVM RBF es el modelo seleccionado** para este enfoque por su AUC más alto (0.874) y su mayor Recall (0.7945), que prioriza no dejar pasar mensajes maliciosos — criterio más importante en un contexto de seguridad.
 
-- Una vez que ambas partes tiene la misma estructura, concatenar ambos dataframes. El resultado de esta operación puede verse en el archivo: [dataset_tranformed.csv](data/dataset_tranformed.csv)
+Una limitación importante de estos modelos es que dependen completamente de las características extraídas manualmente. Si un mensaje de smishing no contiene URLs, no usa lenguaje de urgencia explícito ni promesas de recompensa, los modelos tendrían dificultades para detectarlo. Esto contrasta con los modelos de TF-IDF y embeddings, que analizan el contenido completo del mensaje y pueden capturar patrones más sutiles.
 
-Se obtuvieron 40 resultados, sin embargo para entrenar un modelo se necesita una mayor cantidad de información. Por esa razón se uso la API de *Google Gemini* con el modelo *Gemini 3 Pro Preview* con el siguiente prompt:
+---
 
-```python
+## Aplicación
 
-    prompt = f"""
-Eres un experto en ciberseguridad guatemalteco analizando SMS fraudulentos.
+Para evaluar los modelos de forma interactiva, se desarrolló una demo con la librería *Gradio*. Siga las instrucciones a continuación para ejecutarla localmente.
 
-Dado este mensaje SMS original:
-- Texto: "{row['Mensaje']}"
-- Tipo: "{row['tipo']}"
-- Categoría: "{row['Categoria']}"
+### Requisitos previos
 
-Genera exactamente 8 variaciones sintéticas que:
-- Mantengan la misma etiqueta ({row['tipo']}) y categoría ({row['Categoria']})
-- Usen instituciones guatemaltecas reales (EMETRA, SAT, Banrural, BAM, IGSS, Tigo, Claro, Renap, Migración)
-- Usen español guatemalteco natural (mezcla de vos/usted según contexto)
+- Python 3.9 o superior
+- Una API Key de [Google Gemini](https://aistudio.google.com/app/apikey)
 
-{"Para variaciones SPAM (fraudulentos): Variar nivel de urgencia (mayoría sutil), incluir URLs falsas (.icu, .xyz, .info, .tk, bit.ly), variar montos entre Q150 y Q5,000" if row['tipo'] == 'spam' else "Para variaciones HAM (legítimos): NO incluir URLs sospechosas, mantener tono formal e institucional, variar montos, fechas y detalles menores"}
+### Instrucciones de instalación
 
-Responde ÚNICAMENTE con un array JSON válido con exactamente 8 objetos, sin texto adicional:
-[
-  {{
-    "texto": "texto completo del SMS",
-    "categoria": "{row['Categoria']}",
-    "tipo": "{row['tipo']}"
-  }}
-]
-"""
-
+**1. Clone el repositorio**
+```bash
+git clone <url-del-repositorio>
+cd <nombre-del-repositorio>
 ```
 
-Se le especifico al modelo que a la hora de generar mensages de tipo spam no usuara un tono que relfejara urgencia, pues la worldcloud de los resultados de la encuesta mostró que los mensajes maliciosos no usan palabras como *Alerta*, *Urgente* para generar miedo en el receptor del mensaje, si no que más bien se usan palabras como *Multa*, *Mora*, *Recargo* . Se le pidió generar al menos 8 variaciones por mensaje para obtetner una muestra de más de 500 mensajes para entrenar el modelo. 
+**2. Cree un entorno virtual**
+```bash
+python -m venv venv
+source venv/bin/activate     
+venv\Scripts\activate          
+```
 
-Los mensajes generados sintéticamente se encuentran en el archivo: [dataset_sintetico.csv](data/dataset_sintetico.csv) y el dataset con los mesajes reales y sintéticos unificados se encuentra en el archivo: [dataset_smishing.csv](data/dataset_smishing.csv)
+**3. Instale las dependencias**
+```bash
+pip install -r requirements.txt
+```
 
-### Generación de whitelist
+**4. Configure sus credenciales**
 
-Finalmente, se le solicito al modelo *Claude 4.6 Sonet* con el MCP de búsqueda en internet que encontrará los números de teléfono de las instituciones bancarias, operadoras telfónicas, empresas de paquetería y cadenas de restaurantes más famosas en Guatemala y en base a los resultados de la búsqueda generar una whitelist. Los resultados se encuentran en el archivo: [whitelist.csv](data/whitelist.csv)
+Cree un archivo `.env` en la raíz del proyecto con el siguiente contenido:
 
+```bash
+GEMINI_API_KEY=su_api_key_aqui
+```
 
-## Parte 3: análisis exloratorio
-
-Ya con el dataset formado, se encontraron los siguientes hallazgos en el análisis exploratorio: 
-
-- La distribución de clases es equilibrada aunque predominan los mensajes legítimos
-
-<div align="center">
-  <img src="imgs/fig1_clases.png" width="500"/>
-  <p><em>Figura 8: Distribución de los tipos de mensajes en el dataset  </em></p>
-</div>
-
-
-- Hay categorías de mensajes predominantes, esto podría generar problemas más adelente pues los modelos pueden sufrir *overfitting* de las clases predominants, sin embargo se puede usar una técnica como *SMOTE* para balancear el dataset
-
-<div align="center">
-  <img src="imgs/fig2_categorias.png" width="500"/>
-  <p><em>Figura 9: Distribución de los tipos de mensajes en el dataset  </em></p>
-</div>
-
--  Ambas clases comparten palabras de instituciones guatemaltecas (Tigo, Claro, Banrural) porque los spammers las suplantan activamente. Lo que diferencia al Spam son: *paquete*, *premio*, *enlace*, *link*, *evitar*, *emetra*, *aquí/aqui*. Estos términos están asociados a urgencia, retención de envíos y llamadas a la acción. Ham en cambio concentra: *saldo*, *código*, *factura*, *plan*, *cliente*, *gracias*. Lo cuál corresponde a lenguaje de notificación transaccional legítima.
-
-<div align="center">
-  <img src="imgs/fig4_palabras.png" width="500"/>
-  <p><em>Figura 10: Distribución de los tipos de mensajes en el dataset  </em></p>
-</div>
-
-Para ver código y el proceso completo, ver el archivo: [Proyecto_implementación.ipynb](src/Proyecto_implementacion.ipynb)
-
-## Parte 4: extracción de características
-
-En base a los resultados del análisis exploratorio se determinaron las palabras que mejor representan tanto a los mensajes ilegítimos  como a los legítimos, en base a eso se extrajeron las siguientes características de cada mensaje: 
-
-
-- **has_url:** indica si el mensaje contiene un enlace; se obtiene buscando patrones como `http://`, `https://` o `www.` con expresiones regulares.
-
-- **url_suspicious:** indica si el enlace no pertenece a dominios legítimos conocidos; se obtiene comparando las URLs encontradas contra una lista de dominios confiables.
-
-- **msg_length:** mide la longitud total del mensaje; se obtiene contando el número de caracteres del texto.
-
-- **word_count:** indica la cantidad de palabras en el mensaje; se obtiene dividiendo el texto por espacios y contando los elementos.
-
-- **has_urgency:** detecta si el mensaje transmite urgencia; se obtiene verificando si contiene palabras clave como "urgente", "ahora", "hoy mismo".
-
-- **has_cta:** identifica si hay un llamado a la acción; se obtiene buscando palabras como "clic", "ingresa", "paga", "verifica".
-
-- **has_reward:** detecta si el mensaje ofrece recompensas o premios; se obtiene buscando términos como "ganaste", "premio", "gratis".
-
-- **has_threat:** indica si el mensaje contiene amenazas o consecuencias negativas; se obtiene buscando palabras como "bloqueo", "multa", "vence".
-
-- **has_impersonation:** detecta si el mensaje intenta suplantar una entidad; se obtiene buscando nombres de instituciones como bancos o entidades gubernamentales.
-
-- **impersonation_url:** indica una señal fuerte de phishing; se obtiene cuando hay simultáneamente suplantación (`has_impersonation`) y una URL sospechosa (`url_suspicious`).
-
-- **is_spam:** variable objetivo que indica si el mensaje es spam; se obtiene a partir de la etiqueta original del dataset (`label`).
-
-Ya con esas característcas, se identifico cuáles de estas se relacionaban mejor con la variable objetivo y se determino su importancia
-
-<div align="center">
-  <img src="imgs/fig5_correlacion.png" width="500"/>
-  <p><em>Figura 11: Correlación de cada característica con la etiqueta SPAM  </em></p>
-</div>
-
-<div align="center">
-  <img src="imgs/fig6_chi2.png" width="500"/>
-  <p><em>Figura 12: Prueba de Chi de cada característica  </em></p>
-</div>
-
-En base a eso, se conservaron las variables: url_suspicious, has_url, impersonation_url, has_urgency, has_reward, has_impersonation, has_threat y has_cta pues son las que mejor explican un mensaje de spam. 
-
-Finalmente, se vectorizó cada mensaje usando *TF_IDF*
-
-El proceso completo se puede ver en el archivo [Proyecto_implementación.ipynb](src/Proyecto_implementacion.ipynb) y el dataset final con todas las características está en [dataset_smishing_features.csv](data/dataset_smishing_features)
-
-
-## Anexos
-
-1. 
-<div align="center">
-  <img src="imgs/wordcloud_ham.png" width="500"/>
-  <p><em>Figura 13: Worldcloud de los mensajes legítmos dataset de mensajes de SPAM de Hugging Face </em></p>
-</div>
-
-2. 
-
-<div align="center">
-  <img src="imgs/wordcloud_spam.png" width="500"/>
-  <p><em>Figura 14: Worldcloud de los mensajes legítmos dataset de mensajes de SPAM de Hugging Face </em></p>
-</div>
+**5. Ejecute la aplicación**
+```bash
+python app/main.py
+```
